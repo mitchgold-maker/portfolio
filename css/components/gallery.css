@@ -17,6 +17,13 @@
   overflow: hidden;
   transition: transform 0.3s var(--ease-out);
 }
+/* Gradient variants as classes (not inline styles) so the CSP can drop
+   'unsafe-inline' from style-src. */
+.mini-item.g1 { --g1: #3b1f0d; --g2: #241206; }
+.mini-item.g2 { --g1: #0d2b45; --g2: #0a1b2c; }
+.mini-item.g3 { --g1: #301640; --g2: #1c0d26; }
+.mini-item.g4 { --g1: #0d3b2e; --g2: #08251c; }
+.mini-item.g5 { --g1: #3a0d0d; --g2: #240808; }
 .mini-item:hover { transform: translateY(-4px); }
 .mini-item span { position: relative; z-index: 1; text-shadow: 0 1px 4px rgba(0,0,0,0.4); }
 

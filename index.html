@@ -8,6 +8,16 @@
   <meta name="theme-color" content="#0a0e13" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 
+  <!-- Security hardening: strict CSP (no inline scripts, no unsafe-inline
+       styles, no framing, only same-origin + Google Fonts allowed) and a
+       conservative referrer policy. Note: GitHub Pages serves static files
+       only, so this meta tag is the enforcement mechanism available here —
+       frame-ancestors/report-* directives are ignored when delivered via
+       <meta> per spec and would need a real HTTP header (e.g. via Cloudflare
+       in front of Pages) to be enforced; everything else below does apply. -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self';" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+
   <meta property="og:title" content="Mitchell Goldman — Mechanical Engineer" />
   <meta property="og:description" content="Portfolio: engineering, design, and leadership work from Penn State ASME, Boeing, and the BioRob-InFL Lab." />
   <meta property="og:type" content="website" />
@@ -185,7 +195,7 @@
           <span class="org">Penn State BioRob-InFL Lab · State College, PA</span>
           <ul>
             <li>Validated digital twin simulations through 60+ real-world flight trials, confirming neural network and PID algorithms enabling reliable inverted drone perching at 3.5 m/s.</li>
-            <li>Co-authored: B. Habas, A. Brown, D. Lee, <strong>M. Goldman</strong>, B. Cheng, <a class="link" href="https://arxiv.org/abs/2412.10775" target="_blank" rel="noopener">"From Ceilings to Walls: Universal Dynamic Perching of Small Aerial Robots on Surfaces with Variable Orientations"</a> — IEEE ICRA, 2025.</li>
+            <li>Co-authored: B. Habas, A. Brown, D. Lee, <strong>M. Goldman</strong>, B. Cheng, <a class="link" href="https://arxiv.org/abs/2412.10775" target="_blank" rel="noopener noreferrer">"From Ceilings to Walls: Universal Dynamic Perching of Small Aerial Robots on Surfaces with Variable Orientations"</a> — IEEE ICRA, 2025.</li>
           </ul>
         </article>
       </div>
@@ -219,7 +229,7 @@
 
       <div class="gallery-grid">
         <article class="project-card glass span-4" data-reveal>
-          <div class="project-visual" style="background:linear-gradient(135deg,#0d3b2e,#134832);">
+          <div class="project-visual grad-emerald">
             <svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
               <defs><radialGradient id="g1" cx="30%" cy="40%" r="70%"><stop offset="0%" stop-color="#35e0a1" stop-opacity="0.55"/><stop offset="100%" stop-color="#35e0a1" stop-opacity="0"/></radialGradient></defs>
               <rect width="400" height="160" fill="url(#g1)"/>
@@ -236,7 +246,7 @@
         </article>
 
         <article class="project-card glass span-2" data-reveal data-reveal-delay="1">
-          <div class="project-visual" style="background:linear-gradient(135deg,#0d2b45,#12233b);">
+          <div class="project-visual grad-blue">
             <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
               <path d="M10 140 C 60 40, 140 40, 190 20" stroke="#4d9fff" stroke-width="2" fill="none" opacity="0.7"/>
               <path d="M10 150 C 70 70, 130 70, 190 40" stroke="#35e0a1" stroke-width="1.4" fill="none" opacity="0.5"/>
@@ -251,7 +261,7 @@
         </article>
 
         <article class="project-card glass span-3" data-reveal>
-          <div class="project-visual" style="background:linear-gradient(135deg,#3b1f0d,#4a2a12);">
+          <div class="project-visual grad-amber">
             <svg viewBox="0 0 300 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
               <circle cx="80" cy="90" r="34" fill="none" stroke="#f2a65a" stroke-width="3" opacity="0.7"/>
               <circle cx="220" cy="90" r="34" fill="none" stroke="#f2a65a" stroke-width="3" opacity="0.7"/>
@@ -266,7 +276,7 @@
         </article>
 
         <article class="project-card glass span-3" data-reveal data-reveal-delay="1">
-          <div class="project-visual" style="background:linear-gradient(135deg,#301640,#1f0f30);">
+          <div class="project-visual grad-violet">
             <svg viewBox="0 0 300 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
               <path d="M0 100 Q 25 70 50 100 T 100 100 T 150 100 T 200 100 T 250 100 T 300 100" stroke="#c084fc" stroke-width="2.5" fill="none" opacity="0.7"/>
               <path d="M0 120 Q 25 90 50 120 T 100 120 T 150 120 T 200 120 T 250 120 T 300 120" stroke="#35e0a1" stroke-width="1.5" fill="none" opacity="0.4"/>
@@ -280,7 +290,7 @@
         </article>
 
         <article class="project-card glass span-2" data-reveal data-reveal-delay="2">
-          <div class="project-visual" style="background:linear-gradient(135deg,#3a0d0d,#4a1414);">
+          <div class="project-visual grad-rose">
             <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
               <polygon points="100,20 170,60 170,120 100,160 30,120 30,60" fill="none" stroke="#ff6b6b" stroke-width="2" opacity="0.7"/>
               <polygon points="100,55 140,77 140,113 100,135 60,113 60,77" fill="none" stroke="#ff6b6b" stroke-width="1.4" opacity="0.5"/>
@@ -346,33 +356,33 @@
 
       <div class="mini-gallery-panel" data-gallery-panel="physical">
         <div class="mini-gallery">
-          <div class="mini-item" style="--g1:#3b1f0d;--g2:#241206;"><span>Cornhole Chair</span></div>
-          <div class="mini-item" style="--g1:#0d2b45;--g2:#0a1b2c;"><span>Bird Lamp (CNC)</span></div>
-          <div class="mini-item" style="--g1:#301640;--g2:#1c0d26;"><span>Custom Chocolate</span></div>
-          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Stuffed Book Animal</span></div>
-          <div class="mini-item" style="--g1:#3a0d0d;--g2:#240808;"><span>Turtle Pendant (Casting)</span></div>
+          <div class="mini-item g1"><span>Cornhole Chair</span></div>
+          <div class="mini-item g2"><span>Bird Lamp (CNC)</span></div>
+          <div class="mini-item g3"><span>Custom Chocolate</span></div>
+          <div class="mini-item g4"><span>Stuffed Book Animal</span></div>
+          <div class="mini-item g5"><span>Turtle Pendant (Casting)</span></div>
         </div>
       </div>
       <div class="mini-gallery-panel" data-gallery-panel="cad" hidden>
         <div class="mini-gallery">
-          <div class="mini-item" style="--g1:#0d2b45;--g2:#0a1b2c;"><span>Tensegrity Stand</span></div>
-          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Necklace Hanger</span></div>
-          <div class="mini-item" style="--g1:#301640;--g2:#1c0d26;"><span>Bike Phone Holder</span></div>
-          <div class="mini-item" style="--g1:#3b1f0d;--g2:#241206;"><span>Headphone Stand</span></div>
-          <div class="mini-item" style="--g1:#0d2b45;--g2:#0a1b2c;"><span>Climbing Hang Board</span></div>
-          <div class="mini-item" style="--g1:#3a0d0d;--g2:#240808;"><span>Marble Catapult</span></div>
-          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Mouse Case</span></div>
-          <div class="mini-item" style="--g1:#301640;--g2:#1c0d26;"><span>Keychain</span></div>
-          <div class="mini-item" style="--g1:#3b1f0d;--g2:#241206;"><span>Chapstick Dispenser</span></div>
-          <div class="mini-item" style="--g1:#0d2b45;--g2:#0a1b2c;"><span>Design Contest Bridge</span></div>
-          <div class="mini-item" style="--g1:#3a0d0d;--g2:#240808;"><span>Mountain Coaster</span></div>
-          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Plant Vase</span></div>
+          <div class="mini-item g2"><span>Tensegrity Stand</span></div>
+          <div class="mini-item g4"><span>Necklace Hanger</span></div>
+          <div class="mini-item g3"><span>Bike Phone Holder</span></div>
+          <div class="mini-item g1"><span>Headphone Stand</span></div>
+          <div class="mini-item g2"><span>Climbing Hang Board</span></div>
+          <div class="mini-item g5"><span>Marble Catapult</span></div>
+          <div class="mini-item g4"><span>Mouse Case</span></div>
+          <div class="mini-item g3"><span>Keychain</span></div>
+          <div class="mini-item g1"><span>Chapstick Dispenser</span></div>
+          <div class="mini-item g2"><span>Design Contest Bridge</span></div>
+          <div class="mini-item g5"><span>Mountain Coaster</span></div>
+          <div class="mini-item g4"><span>Plant Vase</span></div>
         </div>
       </div>
       <div class="mini-gallery-panel" data-gallery-panel="arduino" hidden>
         <div class="mini-gallery">
-          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Ultrasonic Distance Sensor + RGB/4-Digit Display</span></div>
-          <div class="mini-item" style="--g1:#301640;--g2:#1c0d26;"><span>Shift-Register LED Display + IR Remote</span></div>
+          <div class="mini-item g4"><span>Ultrasonic Distance Sensor + RGB/4-Digit Display</span></div>
+          <div class="mini-item g3"><span>Shift-Register LED Display + IR Remote</span></div>
         </div>
       </div>
     </section>
@@ -386,7 +396,7 @@
       </div>
       <div class="contact-actions">
         <a class="btn btn-primary" data-magnetic href="mailto:mitchell.a.goldman@gmail.com">Email Me</a>
-        <a class="btn btn-ghost" data-magnetic href="https://linkedin.com/in/mgoldman4" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" data-magnetic href="https://linkedin.com/in/mgoldman4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         <a class="btn btn-ghost" data-magnetic href="assets/Mitchell_Goldman_Resume.pdf" download>Download Résumé</a>
       </div>
       <p class="contact-note">(484) 364-9810 · mitchell.a.goldman@gmail.com</p>
@@ -397,7 +407,7 @@
     <span class="brand">© <span id="year"></span> Mitchell Goldman</span>
     <div class="footer-links">
       <a class="link" href="mailto:mitchell.a.goldman@gmail.com">Email</a>
-      <a class="link" href="https://linkedin.com/in/mgoldman4" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="link" href="https://linkedin.com/in/mgoldman4" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </div>
   </footer>
 
