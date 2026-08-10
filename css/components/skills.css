@@ -1,0 +1,14 @@
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-2);
+}
+.skill-group { padding: var(--space-3); }
+.skill-group h3 { margin-bottom: var(--space-2); font-size: 1.05rem; }
+.skill-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.skill-chips .tag { transition: border-color 0.2s, color 0.2s, transform 0.2s var(--ease-out); }
+.skill-chips .tag:hover { border-color: var(--color-accent); color: var(--color-text); transform: translateY(-2px); }
+
+.cert-list { margin-top: var(--space-3); display: grid; gap: 0.5rem; }
+.cert-list li { font-size: 0.92rem; color: var(--color-muted); display: flex; gap: 0.6rem; align-items: baseline; }
+.cert-list li svg { width: 16px; height: 16px; color: var(--color-accent); flex-shrink: 0; }

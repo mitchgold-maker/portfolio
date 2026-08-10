@@ -1,0 +1,28 @@
+.site-header { position: sticky; top: 0; z-index: 20; }
+
+main section {
+  padding: var(--space-5) var(--space-3);
+  max-width: var(--max-w);
+  margin-inline: auto;
+}
+main section + section { border-top: 1px solid var(--color-border); }
+
+.section-head { max-width: 640px; margin-bottom: var(--space-4); }
+.section-head p { font-size: 1.05rem; }
+
+footer {
+  padding: var(--space-4) var(--space-3);
+  max-width: var(--max-w);
+  margin-inline: auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  justify-content: space-between;
+  align-items: center;
+  color: var(--color-muted);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 640px) {
+  main section { padding: var(--space-4) var(--space-2); }
+}

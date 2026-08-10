@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mitchell Goldman — Mechanical Engineer</title>
+  <meta name="description" content="Mitchell Goldman is a Mechanical Engineering student at Penn State building user-centered hardware — from drone perching research to 3D-printed hovercraft to a Boeing intern program." />
+  <meta name="theme-color" content="#0a0e13" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+
+  <meta property="og:title" content="Mitchell Goldman — Mechanical Engineer" />
+  <meta property="og:description" content="Portfolio: engineering, design, and leadership work from Penn State ASME, Boeing, and the BioRob-InFL Lab." />
+  <meta property="og:type" content="website" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components/nav.css" />
+  <link rel="stylesheet" href="css/components/hero.css" />
+  <link rel="stylesheet" href="css/components/about.css" />
+  <link rel="stylesheet" href="css/components/experience.css" />
+  <link rel="stylesheet" href="css/components/projects.css" />
+  <link rel="stylesheet" href="css/components/skills.css" />
+  <link rel="stylesheet" href="css/components/gallery.css" />
+  <link rel="stylesheet" href="css/components/contact.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav aria-label="Primary">
+      <a class="brand" href="#hero">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="#131a22"/><path d="M14 46V18h6.5l9.5 14 9.5-14H46v28h-6.5V28.5L30 42h-1L19.5 28.5V46H14z" fill="#35e0a1"/></svg>
+        <span>Mitchell Goldman</span>
+      </a>
+      <button class="nav-toggle" data-nav-toggle aria-expanded="false" aria-controls="nav-links">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <span class="sr-only">Menu</span>
+      </button>
+      <ul class="nav-links" id="nav-links" data-nav-links>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a class="btn btn-primary" href="assets/Mitchell_Goldman_Resume.pdf" download>Resume</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- ================= HERO ================= -->
+    <section id="hero" aria-label="Introduction">
+      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+      <div class="hero-inner">
+        <span class="hero-kicker"><span class="dot"></span> Mechanical Engineering · Penn State '27</span>
+        <h1 class="kinetic" data-kinetic>Mitchell Goldman</h1>
+        <p class="hero-lede">
+          I turn user problems into <span class="accent-text-inline">tested, manufacturable hardware</span> —
+          from validating neural-network drone perching at 3.5 m/s to directing a 250-member
+          engineering organization to leading enterprise tooling work at Boeing.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" data-magnetic href="#projects">View Projects</a>
+          <a class="btn btn-ghost" data-magnetic href="#contact">Get in Touch</a>
+        </div>
+        <div class="hero-stats" data-reveal>
+          <div class="stat"><span class="num">3.87</span><span class="label">GPA / 4.00</span></div>
+          <div class="stat"><span class="num">250+</span><span class="label">Engineers directed, PSU ASME</span></div>
+          <div class="stat"><span class="num">60+</span><span class="label">Flight trials, drone research</span></div>
+          <div class="stat"><span class="num">1</span><span class="label">IEEE ICRA publication</span></div>
+        </div>
+      </div>
+      <span class="scroll-cue">Scroll</span>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" aria-labelledby="about-heading">
+      <div class="section-head">
+        <span class="eyebrow">About</span>
+        <h2 id="about-heading">Engineering my future</h2>
+        <p>
+          Since middle school I've moved through nearly every corner of hands-on engineering —
+          CAD, 3D printing, woodworking, programming, robotics — because each new skill unlocks a
+          new way to turn an idea into something real. I'm studying Mechanical Engineering with a
+          minor in Entrepreneurship &amp; Innovation because I care as much about whether a solution
+          is sustainable and adoptable as whether it works in CAD.
+        </p>
+      </div>
+      <div class="about-grid">
+        <div class="pillars">
+          <div class="pillar glass" data-reveal>
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2 2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+              Engineering my future
+            </h3>
+            <p>Bridging the gap between customer problems and sustainable solutions — through user-centered design, not just spec sheets.</p>
+          </div>
+          <div class="pillar glass" data-reveal data-reveal-delay="1">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 0 0 18 9 9 0 0 1 0-18Z"/></svg>
+              Diverse skillset
+            </h3>
+            <p>CAD (Fusion, Onshape, SolidWorks, nTop), additive manufacturing, C++/Python/MATLAB, and Arduino — each new discipline widens what I can build.</p>
+          </div>
+          <div class="pillar glass" data-reveal data-reveal-delay="2">
+            <h3>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg>
+              Fueled by curiosity
+            </h3>
+            <p>Always on the edge of what's new in the field, ready to apply it to the next design challenge rather than default to what I already know.</p>
+          </div>
+        </div>
+        <dl class="facts glass" data-reveal data-reveal-delay="1">
+          <dt>Education</dt>
+          <dd>B.S. Mechanical Engineering<br />Entrepreneurship &amp; Innovation Minor</dd>
+          <dd class="awards">The Pennsylvania State University · GPA 3.87/4.00 · May 2027</dd>
+          <dt>Awards</dt>
+          <dd class="awards">Dean's List · President Walker Award · Outdoor Adventures Outstanding Staff Member</dd>
+          <dt>Based in</dt>
+          <dd>Downingtown, PA &amp; State College, PA</dd>
+          <dt>Currently</dt>
+          <dd>Boeing Intern Program, Everett, WA</dd>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ================= EXPERIENCE ================= -->
+    <section id="experience" aria-labelledby="experience-heading">
+      <div class="section-head">
+        <span class="eyebrow">Experience</span>
+        <h2 id="experience-heading">Where I've built things</h2>
+        <p>Engineering roles, research, and leadership — roughly in reverse-chronological order.</p>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item glass" data-reveal>
+          <div class="role-row">
+            <h3>Boeing Intern Program</h3>
+            <span class="meta">May 2026 – Present</span>
+          </div>
+          <span class="org">Enterprise Certification Data Safety &amp; Airworthiness Engineering · Everett, WA</span>
+          <ul>
+            <li>Built a capability kit SharePoint and Power Apps platform to reduce effort in locating and maintaining critical technical content for enterprise certification processes.</li>
+            <li>Developed a dynamic visual document tree mapping Command Media relationships, ownership, and hierarchy — improving traceability of controlled information org-wide.</li>
+            <li>Leveraged Codex CLI and internal APIs to identify and resolve misalignments between project timelines, requirements, and DevOps workflows.</li>
+          </ul>
+        </article>
+
+        <article class="timeline-item glass" data-reveal>
+          <div class="role-row">
+            <h3>Summers By Design — Galápagos Study Abroad</h3>
+            <span class="meta">May 2025</span>
+          </div>
+          <span class="org">Penn State Education Abroad · Galápagos &amp; Quito, Ecuador</span>
+          <ul>
+            <li>Investigated sustainability challenges, user needs, and UN SDG-aligned opportunities for local tourism businesses through bilingual interviews.</li>
+            <li>Refined 20+ design concepts into <strong>Clima Key</strong>, a scalable A/C efficiency solution projected to reduce electricity use in Ecuador by 5%.</li>
+          </ul>
+        </article>
+
+        <article class="timeline-item glass" data-reveal>
+          <div class="role-row">
+            <h3>Design Team Director</h3>
+            <span class="meta">Apr 2024 – Present</span>
+          </div>
+          <span class="org">Penn State American Society of Mechanical Engineers (PSU ASME) · State College, PA</span>
+          <ul>
+            <li>Direct operations for a 250+ member multidisciplinary engineering organization, overseeing 9 concurrent projects and mentoring project leads in problem solving, team management, and delivery.</li>
+            <li>Led a 20-member engineering team to a <strong>3rd-place national finish</strong> at the ASME EFx Student Design Challenge with a sustainability-focused waste collection and sorting robot.</li>
+            <li>Executed a 200+ attendee intercollegiate combat robotics competition across 13 teams and 9 organizations — operations, safety, sponsorships, stakeholder communication.</li>
+            <li>Built and delivered technical workshops in CAD, manufacturing, generative design, Arduino, MATLAB, and portfolio building.</li>
+          </ul>
+        </article>
+
+        <article class="timeline-item glass" data-reveal>
+          <div class="role-row">
+            <h3>Research Assistant</h3>
+            <span class="meta">Feb 2024 – May 2024</span>
+          </div>
+          <span class="org">Penn State BioRob-InFL Lab · State College, PA</span>
+          <ul>
+            <li>Validated digital twin simulations through 60+ real-world flight trials, confirming neural network and PID algorithms enabling reliable inverted drone perching at 3.5 m/s.</li>
+            <li>Co-authored: B. Habas, A. Brown, D. Lee, <strong>M. Goldman</strong>, B. Cheng, <a class="link" href="https://arxiv.org/abs/2412.10775" target="_blank" rel="noopener">"From Ceilings to Walls: Universal Dynamic Perching of Small Aerial Robots on Surfaces with Variable Orientations"</a> — IEEE ICRA, 2025.</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="leadership-grid">
+        <div class="card glass" data-reveal>
+          <h3>Outdoor Adventures Supervisor</h3>
+          <span class="meta">Aug 2023 – Present · Penn State Outdoor Adventures</span>
+          <p>Train and supervise 26 climbing wall staff in risk management, customer service, and professionalism; instruct climbing lessons and high-ropes programs for 40+ participants weekly.</p>
+        </div>
+        <div class="card glass" data-reveal data-reveal-delay="1">
+          <h3>Food Recovery Network</h3>
+          <span class="meta">Jan 2025 – Present · Penn State FRN</span>
+          <p>Collect 50+ leftover meals from Penn State dining halls weekly and donate them to local food banks.</p>
+        </div>
+        <div class="card glass" data-reveal data-reveal-delay="2">
+          <h3>Autodesk Design &amp; Make Ambassador</h3>
+          <span class="meta">Penn State</span>
+          <p>Organize and lead hands-on Fusion 360 workshops, helping peers build practical CAD, generative design, and interdisciplinary engineering skills.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects" aria-labelledby="projects-heading">
+      <div class="section-head">
+        <span class="eyebrow">Featured Projects</span>
+        <h2 id="projects-heading">Selected work</h2>
+        <p>A mix of research, competition, and independent design projects — CAD through to a working prototype.</p>
+      </div>
+
+      <div class="gallery-grid">
+        <article class="project-card glass span-4" data-reveal>
+          <div class="project-visual" style="background:linear-gradient(135deg,#0d3b2e,#134832);">
+            <svg viewBox="0 0 400 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs><radialGradient id="g1" cx="30%" cy="40%" r="70%"><stop offset="0%" stop-color="#35e0a1" stop-opacity="0.55"/><stop offset="100%" stop-color="#35e0a1" stop-opacity="0"/></radialGradient></defs>
+              <rect width="400" height="160" fill="url(#g1)"/>
+              <ellipse cx="200" cy="110" rx="150" ry="26" fill="none" stroke="#35e0a1" stroke-width="1.5" opacity="0.6"/>
+              <ellipse cx="200" cy="95" rx="120" ry="20" fill="none" stroke="#4d9fff" stroke-width="1.5" opacity="0.5"/>
+              <ellipse cx="200" cy="80" rx="90" ry="15" fill="none" stroke="#35e0a1" stroke-width="1.2" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <h3>3D-Printed R.C. Hovercraft <span class="arrow">↗</span></h3>
+            <p>Led a 15-person mechanical engineering team through full-cycle RC hovercraft design for an ASME race with 50+ spectators — chassis, propulsion, steering, and skirt design, plus organizing the event itself.</p>
+            <div class="tags"><span class="tag">Fusion 360</span><span class="tag">DFM</span><span class="tag">Team Lead</span></div>
+          </div>
+        </article>
+
+        <article class="project-card glass span-2" data-reveal data-reveal-delay="1">
+          <div class="project-visual" style="background:linear-gradient(135deg,#0d2b45,#12233b);">
+            <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path d="M10 140 C 60 40, 140 40, 190 20" stroke="#4d9fff" stroke-width="2" fill="none" opacity="0.7"/>
+              <path d="M10 150 C 70 70, 130 70, 190 40" stroke="#35e0a1" stroke-width="1.4" fill="none" opacity="0.5"/>
+              <circle cx="190" cy="20" r="4" fill="#4d9fff"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <h3>BioRob-InFL Drone Perching <span class="arrow">↗</span></h3>
+            <p>Validated neural network + PID algorithms enabling inverted drone perching at 3.5 m/s across 60+ flight trials. Co-authored an IEEE ICRA 2025 publication.</p>
+            <div class="tags"><span class="tag">Controls</span><span class="tag">Research</span><span class="tag">Publication</span></div>
+          </div>
+        </article>
+
+        <article class="project-card glass span-3" data-reveal>
+          <div class="project-visual" style="background:linear-gradient(135deg,#3b1f0d,#4a2a12);">
+            <svg viewBox="0 0 300 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <circle cx="80" cy="90" r="34" fill="none" stroke="#f2a65a" stroke-width="3" opacity="0.7"/>
+              <circle cx="220" cy="90" r="34" fill="none" stroke="#f2a65a" stroke-width="3" opacity="0.7"/>
+              <rect x="80" y="86" width="140" height="8" fill="#f2a65a" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <h3>OMRAT — 3D-Printed R.C. Car <span class="arrow">↗</span></h3>
+            <p>Contributed to drivetrain design and assembly, reducing part count and overall weight while designing protective casings for onboard electronics.</p>
+            <div class="tags"><span class="tag">Drivetrain</span><span class="tag">3D Printing</span></div>
+          </div>
+        </article>
+
+        <article class="project-card glass span-3" data-reveal data-reveal-delay="1">
+          <div class="project-visual" style="background:linear-gradient(135deg,#301640,#1f0f30);">
+            <svg viewBox="0 0 300 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <path d="M0 100 Q 25 70 50 100 T 100 100 T 150 100 T 200 100 T 250 100 T 300 100" stroke="#c084fc" stroke-width="2.5" fill="none" opacity="0.7"/>
+              <path d="M0 120 Q 25 90 50 120 T 100 120 T 150 120 T 200 120 T 250 120 T 300 120" stroke="#35e0a1" stroke-width="1.5" fill="none" opacity="0.4"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <h3>Replaceable Shoe Tread <span class="arrow">↗</span></h3>
+            <p>Full user-centered design cycle — interviews, decision matrices, iterative prototyping — for a running-shoe tread that cuts waste, ending in a manufacturing cost/timeline analysis for injection molding.</p>
+            <div class="tags"><span class="tag">User Research</span><span class="tag">DFM</span><span class="tag">Sustainability</span></div>
+          </div>
+        </article>
+
+        <article class="project-card glass span-2" data-reveal data-reveal-delay="2">
+          <div class="project-visual" style="background:linear-gradient(135deg,#3a0d0d,#4a1414);">
+            <svg viewBox="0 0 200 160" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <polygon points="100,20 170,60 170,120 100,160 30,120 30,60" fill="none" stroke="#ff6b6b" stroke-width="2" opacity="0.7"/>
+              <polygon points="100,55 140,77 140,113 100,135 60,113 60,77" fill="none" stroke="#ff6b6b" stroke-width="1.4" opacity="0.5"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <h3>Battlebots — Club President <span class="arrow">↗</span></h3>
+            <p>Led a team of 8 designing, machining, building, and programming a 15 lb aluminum combat robot from scratch. Regional semi-finalists.</p>
+            <div class="tags"><span class="tag">CNC</span><span class="tag">Leadership</span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================= SKILLS ================= -->
+    <section id="skills" aria-labelledby="skills-heading">
+      <div class="section-head">
+        <span class="eyebrow">Skills</span>
+        <h2 id="skills-heading">Toolkit</h2>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-group glass" data-reveal>
+          <h3>Design &amp; CAD</h3>
+          <div class="skill-chips">
+            <span class="tag">Autodesk Fusion</span><span class="tag">Onshape</span><span class="tag">SolidWorks</span>
+            <span class="tag">nTop</span><span class="tag">Generative Design</span><span class="tag">Design for Manufacturing</span>
+            <span class="tag">User-Centered Design</span>
+          </div>
+        </div>
+        <div class="skill-group glass" data-reveal data-reveal-delay="1">
+          <h3>Programming &amp; Controls</h3>
+          <div class="skill-chips">
+            <span class="tag">C++</span><span class="tag">Python</span><span class="tag">MATLAB</span><span class="tag">Arduino</span>
+          </div>
+        </div>
+        <div class="skill-group glass" data-reveal data-reveal-delay="2">
+          <h3>Manufacturing &amp; Tools</h3>
+          <div class="skill-chips">
+            <span class="tag">Additive Manufacturing</span><span class="tag">CNC</span><span class="tag">Microsoft 365</span>
+            <span class="tag">SharePoint / Power Apps</span>
+          </div>
+          <ul class="cert-list">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Autodesk Certified Associate — CAD for Mechanical Design</li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Red Cross CPR, First Aid &amp; AED</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section id="gallery" aria-labelledby="gallery-heading">
+      <div class="section-head">
+        <span class="eyebrow">Gallery</span>
+        <h2 id="gallery-heading">Smaller builds</h2>
+        <p>A running log of physical builds, CAD/3D-print projects, and Arduino electronics — the reps that add up between the big projects.</p>
+      </div>
+
+      <div class="gallery-tabs" role="tablist" aria-label="Gallery categories">
+        <button type="button" data-gallery-tab="physical" class="is-active" role="tab" aria-selected="true">Physical Projects</button>
+        <button type="button" data-gallery-tab="cad" role="tab" aria-selected="false">CAD / 3D Printing</button>
+        <button type="button" data-gallery-tab="arduino" role="tab" aria-selected="false">Arduino</button>
+      </div>
+
+      <div class="mini-gallery-panel" data-gallery-panel="physical">
+        <div class="mini-gallery">
+          <div class="mini-item" style="--g1:#3b1f0d;--g2:#241206;"><span>Cornhole Chair</span></div>
+          <div class="mini-item" style="--g1:#0d2b45;--g2:#0a1b2c;"><span>Bird Lamp (CNC)</span></div>
+          <div class="mini-item" style="--g1:#301640;--g2:#1c0d26;"><span>Custom Chocolate</span></div>
+          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Stuffed Book Animal</span></div>
+          <div class="mini-item" style="--g1:#3a0d0d;--g2:#240808;"><span>Turtle Pendant (Casting)</span></div>
+        </div>
+      </div>
+      <div class="mini-gallery-panel" data-gallery-panel="cad" hidden>
+        <div class="mini-gallery">
+          <div class="mini-item" style="--g1:#0d2b45;--g2:#0a1b2c;"><span>Tensegrity Stand</span></div>
+          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Necklace Hanger</span></div>
+          <div class="mini-item" style="--g1:#301640;--g2:#1c0d26;"><span>Bike Phone Holder</span></div>
+          <div class="mini-item" style="--g1:#3b1f0d;--g2:#241206;"><span>Headphone Stand</span></div>
+          <div class="mini-item" style="--g1:#0d2b45;--g2:#0a1b2c;"><span>Climbing Hang Board</span></div>
+          <div class="mini-item" style="--g1:#3a0d0d;--g2:#240808;"><span>Marble Catapult</span></div>
+          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Mouse Case</span></div>
+          <div class="mini-item" style="--g1:#301640;--g2:#1c0d26;"><span>Keychain</span></div>
+          <div class="mini-item" style="--g1:#3b1f0d;--g2:#241206;"><span>Chapstick Dispenser</span></div>
+          <div class="mini-item" style="--g1:#0d2b45;--g2:#0a1b2c;"><span>Design Contest Bridge</span></div>
+          <div class="mini-item" style="--g1:#3a0d0d;--g2:#240808;"><span>Mountain Coaster</span></div>
+          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Plant Vase</span></div>
+        </div>
+      </div>
+      <div class="mini-gallery-panel" data-gallery-panel="arduino" hidden>
+        <div class="mini-gallery">
+          <div class="mini-item" style="--g1:#0d3b2e;--g2:#08251c;"><span>Ultrasonic Distance Sensor + RGB/4-Digit Display</span></div>
+          <div class="mini-item" style="--g1:#301640;--g2:#1c0d26;"><span>Shift-Register LED Display + IR Remote</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" aria-labelledby="contact-heading">
+      <div class="section-head">
+        <span class="eyebrow">Contact</span>
+        <h2 id="contact-heading">Let's build something</h2>
+        <p>Open to conversations about mechanical design, robotics, and product development roles — reach out any time.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-primary" data-magnetic href="mailto:mitchell.a.goldman@gmail.com">Email Me</a>
+        <a class="btn btn-ghost" data-magnetic href="https://linkedin.com/in/mgoldman4" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn btn-ghost" data-magnetic href="assets/Mitchell_Goldman_Resume.pdf" download>Download Résumé</a>
+      </div>
+      <p class="contact-note">(484) 364-9810 · mitchell.a.goldman@gmail.com</p>
+    </section>
+  </main>
+
+  <footer>
+    <span class="brand">© <span id="year"></span> Mitchell Goldman</span>
+    <div class="footer-links">
+      <a class="link" href="mailto:mitchell.a.goldman@gmail.com">Email</a>
+      <a class="link" href="https://linkedin.com/in/mgoldman4" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
