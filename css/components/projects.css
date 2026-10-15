@@ -7,6 +7,7 @@
 .gallery-grid .span-4 { grid-column: span 4; }
 .gallery-grid .span-3 { grid-column: span 3; }
 .gallery-grid .span-2 { grid-column: span 2; }
+.gallery-grid .span-6 { grid-column: span 6; }
 
 .project-card {
   position: relative;
@@ -43,5 +44,5 @@
 
 @media (max-width: 900px) {
   .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid .span-4, .gallery-grid .span-3, .gallery-grid .span-2 { grid-column: span 2; }
+  .gallery-grid .span-6, .gallery-grid .span-4, .gallery-grid .span-3, .gallery-grid .span-2 { grid-column: span 2; }
 }

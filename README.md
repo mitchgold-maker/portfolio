@@ -18,6 +18,8 @@ js/
                          particles, magnetic buttons, gallery tabs)
 assets/
   Mitchell_Goldman_Resume.pdf
+cassette-lab/
+  index.html        -- Cassette Lab beat maker (self-contained app, served at /cassette-lab/)
 ```
 
 ## Local preview
