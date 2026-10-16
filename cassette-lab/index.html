@@ -83,6 +83,15 @@ input[type=range]{accent-color:var(--sun);height:24px}
 .barstrip{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;justify-content:space-between}
 .barbtn{position:relative;font-family:var(--f-mono);font-size:13px}
 .barbtn.playing{box-shadow:inset 0 -3px 0 var(--hot)}
+.clipbtn{position:relative}
+.clipbtn.has::after{content:"";position:absolute;top:5px;right:5px;width:5px;height:5px;border-radius:50%;background:var(--t3)}
+.clipbtn.has[aria-pressed="true"]::after{background:var(--ink)}
+.clipbar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;background:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px}
+.clipbar .seg{gap:2px;background:var(--deck);border-radius:12px;padding:2px}
+.clipbar .seg .chip{border-color:transparent;background:transparent}
+.clipbar .seg .chip[aria-pressed="true"]{background:var(--well-hi);color:var(--paper)}
+.cliptext{flex-basis:100%;margin:0;font-size:12px;color:var(--dim)}
+.cliptext b{color:var(--paper);font-weight:700}
 .halves{display:none}
 
 /* Step grids */
@@ -219,7 +228,7 @@ input[type=range]{accent-color:var(--sun);height:24px}
     </div>
     <div class="box">
       <select id="preset" aria-label="Load a starter beat"></select>
-      <button class="chip" id="dup" title="Copy this pattern into the next slot">Copy →</button>
+      <button class="chip" id="dup" title="Duplicate this pattern into the next slot">Duplicate →</button>
       <button class="chip" id="clear">Clear</button>
     </div>
   </section>
@@ -237,7 +246,9 @@ input[type=range]{accent-color:var(--sun);height:24px}
         <label class="cap" for="kit">Kit</label>
         <select id="kit"></select>
       </div>
+      <button class="chip clipbtn" data-cliptoggle aria-pressed="false">Copy &amp; paste</button>
     </div>
+    <div class="clipbar" data-clip hidden></div>
     <div class="barstrip" data-strip></div>
     <div class="seq" id="drumGrid"></div>
     <p class="hint">Tap a step for a hit, tap again for an accent, once more to clear. Drag sideways to paint. Tap a name to hear it. To swap a row's sound, go to Play → Edit pads.</p>
@@ -250,8 +261,10 @@ input[type=range]{accent-color:var(--sun);height:24px}
         <select id="key" aria-label="Key"></select>
         <select id="scale" aria-label="Scale"></select>
         <button class="mute melmute" id="melMute" aria-pressed="false" title="Mute melody">M</button>
+        <button class="chip clipbtn" data-cliptoggle aria-pressed="false">Copy &amp; paste</button>
       </div>
     </div>
+    <div class="clipbar" data-clip hidden></div>
     <div class="barstrip" data-strip></div>
     <div class="seq" id="melGrid"></div>
     <p class="hint">Every row is a note in your key, so anything you place fits. Outlined rows are the root note. Change the key or scale and the melody follows.</p>
@@ -306,6 +319,7 @@ input[type=range]{accent-color:var(--sun);height:24px}
       <li><kbd>1</kbd>–<kbd>8</kbd> drum pads</li>
       <li><kbd>A</kbd>–<kbd>K</kbd> piano (W E T Y U = black keys)</li>
       <li><kbd>Z</kbd> / <kbd>X</kbd> octave down / up</li>
+      <li><kbd>Ctrl</kbd>/<kbd>⌘</kbd> + <kbd>C</kbd> / <kbd>V</kbd> copy / paste a bar</li>
     </ul>
   </section>
   <p class="hint" style="text-align:center;margin:0 auto">Built by Mitchell Goldman · <a href="../" style="color:var(--sun)">See more projects</a></p>
@@ -634,6 +648,7 @@ function renderStrips(){
     if(multi) w.append(bars); w.append(right);
     w.hidden=!multi&&!mq.matches;
   });
+  renderClip();
 }
 function barHas(P,i){const n=spb(P),a=i*n,b=a+n;return P.d.some(r=>r.slice(a,b).some(Boolean))||P.m.some(r=>r.slice(a,b).some(Boolean));}
 $$('[data-strip]').forEach(w=>w.addEventListener('click',e=>{
@@ -674,6 +689,73 @@ function setLength(sig,bars){
   const msg=sig!==P.sig?`Pattern ${L} is now in ${sig}`:grow?`${L} is ${bars} bars. Bar 1 repeats so you can make variations.`:`${L} is now ${bars} bar${bars>1?'s':''}`;
   renderAll(); save(); toast(msg,()=>{S.pats[S.cur]=old;});
 }
+
+/* ---------- Copy & paste ---------- */
+let clip=null,clipScope='drums',clipOpen=false;
+const SCOPE_NAME={drums:'drums',melody:'melody',both:'drums + melody'};
+const LTR=()=> 'ABCD'[S.cur];
+function barWhere(P){return P.bars>1?`bar ${view.bar+1} of ${LTR()}`:`pattern ${LTR()}`;}
+function renderClip(){
+  const P=cur(),multi=P.bars>1,where=barWhere(P);
+  $$('[data-cliptoggle]').forEach(b=>{b.setAttribute('aria-pressed',clipOpen);b.classList.toggle('has',!!clip);});
+  let html='';
+  if(clipOpen){
+    const seg=['drums','melody','both'].map(sc=>`<button class="chip" data-scope="${sc}" aria-pressed="${sc===clipScope}">${sc==='both'?'Both':sc[0].toUpperCase()+sc.slice(1)}</button>`).join('');
+    const copy=`<button class="chip" data-act="copybar">Copy ${multi?'bar '+(view.bar+1):'bar'}</button>`+(multi?`<button class="chip" data-act="copypat">Copy all ${P.bars} bars</button>`:'');
+    let paste='';
+    if(clip) paste=clip.type==='bar'
+      ?`<button class="chip" data-act="pastebar" aria-pressed="true">Paste into ${where}</button>`+(multi?`<button class="chip" data-act="pasteall">Paste into every bar</button>`:'')
+      :`<button class="chip" data-act="pastepat" aria-pressed="true">Paste over pattern ${LTR()}</button>`;
+    const txt=clip
+      ?`Clipboard: <b>${SCOPE_NAME[clip.scope]}</b> from ${clip.from} (${clip.sig}${clip.type==='pat'?' × '+clip.bars+' bars':''}). Pick any bar or pattern A–D, then paste.`
+      :'Choose what to copy, then copy. Next, pick another bar or pattern (A–D) and paste. Pasting replaces what\'s there, and you can undo it.';
+    html=`<div class="grp seg" role="group" aria-label="What to copy">${seg}</div><div class="grp">${copy}</div><div class="grp">${paste}</div><p class="cliptext">${txt}</p>`;
+  }
+  $$('[data-clip]').forEach(w=>{w.hidden=!clipOpen;if(w._html!==html){w.innerHTML=html;w._html=html;}});
+}
+function copyBar(){
+  const P=cur(),n=spb(P),a=view.bar*n,sc=clipScope;
+  clip={type:'bar',scope:sc,sig:P.sig,bars:1,len:n,from:barWhere(P),
+    d:sc!=='melody'?P.d.map(r=>r.slice(a,a+n)):null, m:sc!=='drums'?P.m.map(r=>r.slice(a,a+n)):null};
+  renderClip(); toast(`Copied ${SCOPE_NAME[sc]} from ${clip.from}`);
+}
+function copyPat(){
+  const P=cur(),sc=clipScope;
+  clip={type:'pat',scope:sc,sig:P.sig,bars:P.bars,len:spb(P),from:`pattern ${LTR()}`,
+    d:sc!=='melody'?clone(P.d):null, m:sc!=='drums'?clone(P.m):null};
+  renderClip(); toast(`Copied ${SCOPE_NAME[sc]} from all ${P.bars} bars of ${LTR()}`);
+}
+function fitSig(){ // an empty pattern takes on the copied time signature
+  const P=cur(); if(!filled(P)&&clip.sig!==P.sig){S.pats[S.cur]=emptyPat(clip.sig,P.bars);return true;} return false;
+}
+function writeBar(P,b,sb){
+  const n=spb(P),a=b*n,cn=clip.len,o=sb*cn;
+  const put=(rows,src)=>rows.forEach((r,i)=>{for(let k=0;k<n;k++)r[a+k]=k<cn?src[i][o+k]:0;});
+  if(clip.d) put(P.d,clip.d); if(clip.m) put(P.m,clip.m);
+}
+function finishPaste(slot,old,msg){
+  if(playing&&curStep>=patLen(cur()))curStep=0;
+  renderAll(); save(); toast(msg,()=>{S.pats[slot]=old;});
+}
+function pasteBar(all){
+  if(!clip) return; const slot=S.cur,old=clone(cur()),adopted=fitSig(),P=cur();
+  const where=barWhere(P);
+  (all?[...Array(P.bars).keys()]:[view.bar]).forEach(b=>writeBar(P,b,0));
+  const fit=!adopted&&clip.sig!==P.sig?` (fit to ${P.sig})`:'';
+  finishPaste(slot,old,`Pasted ${SCOPE_NAME[clip.scope]} into ${all?'every bar of '+LTR():where}${fit}`);
+}
+function pastePat(){
+  if(!clip) return; const slot=S.cur,old=clone(cur());
+  if(clip.scope==='both'){S.pats[slot]={sig:clip.sig,bars:clip.bars,d:clone(clip.d),m:clone(clip.m)};view.bar=0;view.half=0;}
+  else{fitSig();const P=cur();for(let b=0;b<P.bars;b++)writeBar(P,b,b%clip.bars);}
+  finishPaste(slot,old,`Pasted ${SCOPE_NAME[clip.scope]} from ${clip.from} into ${LTR()}`);
+}
+$$('[data-cliptoggle]').forEach(b=>b.addEventListener('click',()=>{clipOpen=!clipOpen;if(clipOpen&&clipScope!=='both'&&(S.tab==='drums'||S.tab==='melody'))clipScope=S.tab;renderClip();}));
+$$('[data-clip]').forEach(w=>w.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b) return;
+  if(b.dataset.scope){clipScope=b.dataset.scope;renderClip();return;}
+  ({copybar:copyBar,copypat:copyPat,pastebar:()=>pasteBar(false),pasteall:()=>pasteBar(true),pastepat:pastePat})[b.dataset.act]?.();
+}));
 
 /* ---------- Pads ---------- */
 let editPads=false,selPad=-1,drag=null;
@@ -899,7 +981,7 @@ $('#clear').addEventListener('click',()=>{const slot=S.cur,old=clone(cur()),P=cu
   const e=emptyPat(P.sig,P.bars);
   if(S.tab==='drums'){P.d=e.d;what='drums';}else if(S.tab==='melody'){P.m=e.m;what='melody';}else S.pats[slot]=e;
   renderAll();save();toast(`Cleared ${what} in ${'ABCD'[slot]}`,()=>{S.pats[slot]=old;});});
-$$('.tab').forEach(t=>t.addEventListener('click',()=>{S.tab=t.dataset.tab;renderTab();save();}));
+$$('.tab').forEach(t=>t.addEventListener('click',()=>{S.tab=t.dataset.tab;if(clipScope!=='both'&&(S.tab==='drums'||S.tab==='melody'))clipScope=S.tab;renderTab();renderClip();save();}));
 $('#kit').addEventListener('change',e=>{S.kit=e.target.value;applyFx();save();initAudio();playSound(S.lanes[0],ctx.currentTime,.9);playSound(S.lanes[1],ctx.currentTime+.25,.8);});
 $('#key').addEventListener('change',e=>{S.key=+e.target.value;renderAll();save();});
 $('#scale').addEventListener('change',e=>{S.scale=e.target.value;renderAll();save();});
@@ -910,8 +992,15 @@ $('#octUp').addEventListener('click',()=>{allOff();S.oct=Math.min(2,S.oct+1);ren
 const KEYMAP={a:0,w:1,s:2,e:3,d:4,f:5,t:6,g:7,y:8,h:9,u:10,j:11,k:12,o:13,l:14,p:15,';':16};
 const held={};
 window.addEventListener('keydown',e=>{
-  if((e.target.closest&&e.target.closest('input,textarea,select'))||e.metaKey||e.ctrlKey||e.altKey) return;
-  const k=e.key.toLowerCase();
+  const k=e.key.toLowerCase(), inField=e.target.closest&&e.target.closest('input,textarea,select');
+  if((e.metaKey||e.ctrlKey)&&!e.altKey&&(k==='c'||k==='v')&&!inField&&(S.tab==='drums'||S.tab==='melody')&&!String(window.getSelection()||'')){
+    e.preventDefault();
+    if(k==='c'){if(clipScope!=='both')clipScope=S.tab;copyBar();}
+    else if(clip){clip.type==='bar'?pasteBar(false):pastePat();}
+    else toast('Nothing copied yet. Press Ctrl/⌘ + C on a bar first.');
+    return;
+  }
+  if(inField||e.metaKey||e.ctrlKey||e.altKey) return;
   if(k===' '&&!(e.target.closest&&e.target.closest('button'))){e.preventDefault();playing?stop():start();return;}
   if(e.repeat) return;
   if(k>='1'&&k<='8'){livePad(S.padOrder[+k-1]);return;}
